@@ -11,18 +11,18 @@ public class PollManager {
     private final Map<String, Poll> polls = new HashMap<>();
 
     public User getUser(String username) {
-        users.get(username);
+        return users.get(username);
     }
 
     public User addUser(User user) {
-        users.put(user.getUsername(), user);
+       return  users.put(user.getUsername(), user);
     }
 
     public Poll getPoll(String question) {
-        polls.get(question);
+        return polls.get(question);
     }
 
     public Poll addPoll(Poll poll) {
-        polls.put(poll.getQuestion(), poll);
+        return polls.put(poll.getQuestion(), poll);
     }
 }
