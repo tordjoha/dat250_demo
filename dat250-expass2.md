@@ -1,8 +1,18 @@
 # Experiment 2: Rest API with Spring Boot
 
 ### Topics
+- What i did
 - technical problems that you encountered during installation and how you resolved
 - any pending issues with this assignment that you did not manage to solve
+
+#### What did I do?
+- Implemented the first draft of the PollApp domain model; Poll, PollManager, User, Vote, VoteOption
+- Made tests for the controllers first in Bruno, which is a test-driven approach so that when implementing the controllers
+these tests would pass
+- Implemented controllers; PollController, UserController, VoteController
+- Implemented some tests for the controllers in PollingTests, which is supposed to test out the main functions and flow of
+the polling application
+- Some technical difficulties were encountered, which I will describe below
 
 #### Technical Problems Encountered
 - When making API requests in Bruno and giving each request a test, they all came back as passed, even though I had not
