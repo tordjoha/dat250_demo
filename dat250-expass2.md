@@ -15,18 +15,20 @@ the polling application
 - Some technical difficulties were encountered, which I will describe below
 
 #### Technical Problems Encountered
-- When making API requests in Bruno and giving each request a test, they all came back as passed, even though I had not
+- ~~When making API requests in Bruno and giving each request a test, they all came back as passed, even though I had not
 yet implemented controllers yet, I have not yet figured out a way to fix this such that the test driven approach would
-be implemented correctly.
+be implemented correctly.~~ I found out that I had missed a field when creating the http requests in Bruno, and these
+tests now correctly fails when I "comment out" the controllers. I have also made some updates to the controllers so they
+should respond correctly.
 - I chose to write tests in Bruno, but to automate testing, I found no easy way to do this with already written tests,
 so that had to be done manually.
 
 
 #### Pending Issues
-- I am having some issues with the VoteController which I have yet to resolve with the @PostMapping and @Putmapping.
+- ~~I am having some issues with the VoteController which I have yet to resolve with the @PostMapping and @Putmapping.~~
 - Currently I cant find a way to gather all the options available for a certain poll, only one vote option at a time,
 and as such I have not been able to implement the Post & Put mappings in VoteController
-- Have translated the tests from Bruno into a native approach using springs RestClient, but have encountered some errorrs
+- Have translated the tests from Bruno into a native approach using springs RestClient, but have encountered some errors
 which I have yet to resolve.
 
 All in all a good learning experience, and would like to continue working on this assignment to try to resolve all my 

@@ -4,6 +4,7 @@ import java.time.Instant;
 
 public class Poll
 {
+    private String id;
     private String question;
     private Instant publishedAt;
     private Instant validUntil;
@@ -11,10 +12,19 @@ public class Poll
     public Poll() {
     }
 
-    public Poll(String question, Instant publishedAt, Instant validUntil) {
+    public Poll(String id, String question, Instant publishedAt, Instant validUntil) {
+        this.id = id;
         this.question = question;
         this.publishedAt = publishedAt;
         this.validUntil = validUntil;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getQuestion() {

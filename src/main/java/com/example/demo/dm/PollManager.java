@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Component
 public class PollManager {
@@ -15,14 +16,27 @@ public class PollManager {
     }
 
     public User addUser(User user) {
-       return  users.put(user.getUsername(), user);
+       users.put(user.getUsername(), user);
+       return user;
     }
 
-    public Poll getPoll(String question) {
-        return polls.get(question);
+    public Poll getPoll(String id) {
+        return polls.get(id);
     }
 
     public Poll addPoll(Poll poll) {
-        return polls.put(poll.getQuestion(), poll);
+        if (poll.getId() == null || poll.getId().isEmpty()) {
+         poll.setId(UUID.randomUUID().toString());
+        }
+        polls.put(poll.getId(), poll);
+        return poll;
+    }
+
+    public Poll removePoll(String id) {
+        return polls.remove(id);
+    }
+
+    public Map<String, Poll> getAllPolls() {
+        return polls;
     }
 }
