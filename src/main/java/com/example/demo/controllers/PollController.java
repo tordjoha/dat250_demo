@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/polls")
+@CrossOrigin
 public class PollController {
 
     private final PollManager pollManager;
