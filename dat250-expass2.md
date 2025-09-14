@@ -30,7 +30,7 @@ so that had to be done manually.
 - ~~Currently I cant find a way to gather all the options available for a certain poll, only one vote option at a time,
 and as such I have not been able to implement the Post & Put mappings in VoteController~~ Fixed
 - Have translated the tests from Bruno into a native approach using springs RestClient, but have encountered some errors
-which I have yet to resolve.
+which I have yet to resolve. The tests are currently failing and as such, the automaticly run tests in the repo will show up as a failure when comitting new changes.
 
 All in all a good learning experience, and would like to continue working on this assignment to try to resolve all my 
 issues.
