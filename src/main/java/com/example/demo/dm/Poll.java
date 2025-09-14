@@ -1,6 +1,8 @@
 package com.example.demo.dm;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Poll
 {
@@ -8,6 +10,7 @@ public class Poll
     private String question;
     private Instant publishedAt;
     private Instant validUntil;
+    private List<Vote> votes = new ArrayList<>();
 
     public Poll() {
     }
@@ -49,5 +52,9 @@ public class Poll
 
     public void setValidUntil(Instant validUntil) {
         this.validUntil = validUntil;
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
     }
 }

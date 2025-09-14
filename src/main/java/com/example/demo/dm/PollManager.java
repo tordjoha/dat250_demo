@@ -2,9 +2,7 @@ package com.example.demo.dm;
 
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Component
 public class PollManager {
@@ -38,5 +36,19 @@ public class PollManager {
 
     public Map<String, Poll> getAllPolls() {
         return polls;
+    }
+
+    public Vote addVote(String pollId, Vote vote) {
+        Poll poll = polls.get(pollId);
+        if (poll == null) {
+            throw new IllegalArgumentException("Poll with id " + pollId + " does not exist");
+        }
+        poll.getVotes().add(vote);
+        return vote;
+    }
+
+    public List<Vote> getVotes(String pollId) {
+        Poll poll = polls.get(pollId);
+        return poll != null ? poll.getVotes() : new ArrayList<>();
     }
 }

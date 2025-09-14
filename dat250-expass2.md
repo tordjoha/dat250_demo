@@ -1,7 +1,7 @@
 # Experiment 2: Rest API with Spring Boot
 
 ### Topics
-- What i did
+- What I did
 - technical problems that you encountered during installation and how you resolved
 - any pending issues with this assignment that you did not manage to solve
 
@@ -13,6 +13,7 @@ these tests would pass
 - Implemented some tests for the controllers in PollingTests, which is supposed to test out the main functions and flow of
 the polling application
 - Some technical difficulties were encountered, which I will describe below
+- Made some updates to Poll such that they now have a unique id on creation as well as making a list for holding votes
 
 #### Technical Problems Encountered
 - ~~When making API requests in Bruno and giving each request a test, they all came back as passed, even though I had not
@@ -26,8 +27,8 @@ so that had to be done manually.
 
 #### Pending Issues
 - ~~I am having some issues with the VoteController which I have yet to resolve with the @PostMapping and @Putmapping.~~
-- Currently I cant find a way to gather all the options available for a certain poll, only one vote option at a time,
-and as such I have not been able to implement the Post & Put mappings in VoteController
+- ~~Currently I cant find a way to gather all the options available for a certain poll, only one vote option at a time,
+and as such I have not been able to implement the Post & Put mappings in VoteController~~ Fixed
 - Have translated the tests from Bruno into a native approach using springs RestClient, but have encountered some errors
 which I have yet to resolve.
 
