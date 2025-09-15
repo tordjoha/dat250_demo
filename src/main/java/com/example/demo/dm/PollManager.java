@@ -14,8 +14,11 @@ public class PollManager {
     }
 
     public User addUser(User user) {
-       users.put(user.getUsername(), user);
-       return user;
+        if (users.containsKey(user.getUsername())) {
+            throw new IllegalArgumentException("Username already exists");
+        }
+        users.put(user.getUsername(), user);
+        return user;
     }
 
     public Poll getPoll(String id) {
