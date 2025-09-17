@@ -22,6 +22,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("org.hibernate.orm:hibernate-core:7.1.1.Final") // Hibernate ORM
+    implementation("jakarta.persistence:jakarta.persistence-api:3.2.0") // JPA API
+    implementation("com.h2database:h2:2.3.232") // H2 Database
 }
 
 tasks.withType<Test> {
