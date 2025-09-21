@@ -1,34 +1,52 @@
 package com.example.demo.dm;
 
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Poll
 {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String identifier;
     private String question;
     private Instant publishedAt;
     private Instant validUntil;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Vote> votes = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VoteOption> options = new ArrayList<>();
 
     public Poll() {
     }
 
-    public Poll(String id, String question, Instant publishedAt, Instant validUntil) {
-        this.id = id;
+    public Poll(String identifier, String question, Instant publishedAt, Instant validUntil) {
+        this.identifier = identifier;
         this.question = question;
         this.publishedAt = publishedAt;
         this.validUntil = validUntil;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
     public String getQuestion() {

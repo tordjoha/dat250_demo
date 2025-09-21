@@ -1,11 +1,18 @@
 package com.example.demo.dm;
 
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.LinkedHashSet;
 import java.util.UUID;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String username;
     private String email;
     private LinkedHashSet<Poll> created;
@@ -18,6 +25,14 @@ public class User {
         this.username = username;
         this.email = email;
         this.created = new LinkedHashSet<>();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {

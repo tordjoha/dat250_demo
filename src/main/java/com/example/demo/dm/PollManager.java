@@ -29,10 +29,10 @@ public class PollManager {
     }
 
     public Poll addPoll(Poll poll) {
-        if (poll.getId() == null || poll.getId().isEmpty()) {
-         poll.setId(UUID.randomUUID().toString());
+        if (poll.getId() == null || poll.getIdentifier().isEmpty()) {
+         poll.setIdentifier(UUID.randomUUID().toString());
         }
-        polls.put(poll.getId(), poll);
+        polls.put(poll.getIdentifier(), poll);
         return poll;
     }
 

@@ -6,6 +6,7 @@ import com.example.demo.dm.VoteOption;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -25,8 +26,8 @@ public class PollController {
     }
 
     @GetMapping()
-    public List<Poll> getPolls() {
-        return new ArrayList<>(pollManager.getAllPolls().values());
+    public Collection<Poll> getPolls() {
+        return pollManager.getAllPolls().values();
     }
 
     @GetMapping("/{id}")
