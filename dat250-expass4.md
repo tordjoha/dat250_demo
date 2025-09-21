@@ -11,16 +11,16 @@ making it not possible to add voting options or votes to them.
 
 ## Link to code for experiment
 [PollController](src/main/java/com/example/demo/controllers/PollController.java)
-[UserController](/src/main/java/com/example/demo/UserController.java)
-[VoteController](/src/main/java/com/example/demo/VoteController.java)
+[UserController](src/main/java/com/example/demo/controllers/UserController.java)
+[VoteController](src/main/java/com/example/demo/controllers/VoteController.java)
 
-[Poll](/src/main/java/com/example/demo/Poll.java)
-[PollManager](/src/main/java/com/example/demo/PollManager.java)
-[User](/src/main/java/com/example/demo/User.java)
-[Vote](/src/main/java/com/example/demo/Vote.java)
-[VoteOption](/src/main/java/com/example/demo/VoteOption.java)
+[Poll](src/main/java/com/example/demo/dm/Poll.java)
+[PollManager](src/main/java/com/example/demo/dm/PollManager.java)
+[User](src/main/java/com/example/demo/dm/User.java)
+[Vote](src/main/java/com/example/demo/dm/Vote.java)
+[VoteOption](src/main/java/com/example/demo/dm/VoteOption.java)
 
-[PollsTest](/src/test/java/com/example/demo/PollsTest.java)
+[PollsTest](src/test/java/com/example/demo/PollsTest.java)
 
 ## Explanation of how I inspected the database tables and what tables were created. Provide screenshots of created tables
 
