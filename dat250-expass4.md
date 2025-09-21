@@ -1,6 +1,6 @@
 # Experiment 4: JPA
 
-## Technical problems during installation and use of JPA and how I resolved it
+## Technical problems
 - Had to change imports to own package name
 - I had added an UUID when creating a new user, but with the database being the one to assign one, I removed it
 - Some methods were missing when importing the PollsTest.java, so I had to update the classes somewhat to incorporate these new methods
@@ -9,7 +9,7 @@ PollManager gets instantiated as the same object, and not with "new ...", but I 
 store the data. This means that the tests from PollsTest do not yet pass, as polls cannot be modified or found after creation,
 making it not possible to add voting options or votes to them.
 
-## Link to code for experiment
+## Code links
 [PollController](src/main/java/com/example/demo/controllers/PollController.java)
 [UserController](src/main/java/com/example/demo/controllers/UserController.java)
 [VoteController](src/main/java/com/example/demo/controllers/VoteController.java)
@@ -23,8 +23,9 @@ making it not possible to add voting options or votes to them.
 [PollsTest](src/test/java/com/example/demo/PollsTest.java)
 
 ## Explanation of how I inspected the database tables and what tables were created. Provide screenshots of created tables
+- Haven't been able to create the tables as there is still some errors to be solved, see below
 
-## Pending issues which I did not manage to solve
+## Pending issues
 - Have trouble with storing of polls, I can create them but when trying to retrieve, I get an empty list "[]"
 - "java.lang.IllegalArgumentException: Entity may not be null
   at org.hibernate.event.spi.PersistEvent.<init>(PersistEvent.java:27)
