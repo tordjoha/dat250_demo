@@ -21,6 +21,15 @@ public class UserController {
         return pollManager.addUser(user);
     }
 
+    @PostMapping("/{username}/polls")
+    public ResponseEntity<?> createPollForUser(@PathVariable String username, @RequestBody String question) {
+        User user = pollManager.getUser(username);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(user.createPoll(question));
+    }
+
     @GetMapping("/{username}")
     public ResponseEntity<User> getUser(@PathVariable String username) {
         User user = pollManager.getUser(username);

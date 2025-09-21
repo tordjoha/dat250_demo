@@ -1,20 +1,23 @@
 package com.example.demo.dm;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.LinkedHashSet;
 import java.util.UUID;
 
 public class User {
     private String username;
     private String email;
-    private final String id;
+    private LinkedHashSet<Poll> created;
 
     public User() {
-        this.id = UUID.randomUUID().toString();
+        this.created = new LinkedHashSet<>();
     }
 
-    public User(String username, String email , String id) {
+    public User(String username, String email) {
         this.username = username;
         this.email = email;
-        this.id = id;
+        this.created = new LinkedHashSet<>();
     }
 
     public String getUsername() {
@@ -33,8 +36,41 @@ public class User {
         this.email = email;
     }
 
-    public String getId() {
-        return id;
+    /**
+     * Creates a new Poll object for this user
+     * with the given poll question
+     * and returns it.
+     */
+    public Poll createPoll(String question) {
+        String id = UUID.randomUUID().toString();
+        Instant publishedAt = Instant.now();
+        Instant validUntil = publishedAt.plus(24, ChronoUnit.HOURS);
+        Poll poll = new Poll(id, question, publishedAt, validUntil);
+        created.add(poll);
+        return poll;
+
     }
+
+    /**
+     * Creates a new Vote for a given VoteOption in a Poll
+     * and returns the Vote as an object.
+     */
+    public Vote voteFor(VoteOption option) {
+        // TODO: implement
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
