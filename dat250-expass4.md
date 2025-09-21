@@ -10,7 +10,7 @@ store the data. This means that the tests from PollsTest do not yet pass, as pol
 making it not possible to add voting options or votes to them.
 
 ## Link to code for experiment
-[PollController](/src/main/java/com/example/demo/PollController.java)
+[PollController](src/main/java/com/example/demo/PollController.java)
 [UserController](/src/main/java/com/example/demo/UserController.java)
 [VoteController](/src/main/java/com/example/demo/VoteController.java)
 
