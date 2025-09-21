@@ -59,18 +59,4 @@ public class User {
         // TODO: implement
         return null;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

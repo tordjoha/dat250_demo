@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.dm.Poll;
 import com.example.demo.dm.PollManager;
+import com.example.demo.dm.VoteOption;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
@@ -32,5 +33,16 @@ public class PollController {
     public ResponseEntity<Poll> getPollById(@PathVariable String id) {
         Poll poll = pollManager.getPoll(id);
         return poll != null ? ResponseEntity.ok(poll) : ResponseEntity.notFound().build();
+    }
+
+
+    @PostMapping("/{pollId}/options")
+    public ResponseEntity<?> addOptionToPoll(@PathVariable String pollId, @RequestBody String caption) {
+        Poll poll = pollManager.getPoll(pollId);
+        if (poll == null) {
+            return ResponseEntity.notFound().build();
+        }
+        VoteOption option = poll.addVoteOption(caption);
+        return ResponseEntity.ok(option);
     }
 }

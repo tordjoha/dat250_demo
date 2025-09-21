@@ -1,7 +1,6 @@
 package com.example.demo.dm;
 
 import org.springframework.stereotype.Component;
-
 import java.util.*;
 
 @Component
@@ -19,6 +18,10 @@ public class PollManager {
         }
         users.put(user.getUsername(), user);
         return user;
+    }
+
+    public List<User> getAllUsers() {
+        return new ArrayList<>(users.values());
     }
 
     public Poll getPoll(String id) {
