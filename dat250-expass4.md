@@ -27,10 +27,12 @@ making it not possible to add voting options or votes to them.
 
 ## Pending issues
 - Have trouble with storing of polls, I can create them but when trying to retrieve, I get an empty list "[]"
-- "java.lang.IllegalArgumentException: Entity may not be null
+- ````java
+  "java.lang.IllegalArgumentException: Entity may not be null
   at org.hibernate.event.spi.PersistEvent.<init>(PersistEvent.java:27)
   at org.hibernate.event.spi.PersistEvent.<init>(PersistEvent.java:20)
   at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:676)
   at com.example.demo.PollsTest.populate(PollsTest.java:40)
   at com.example.demo.PollsTest.lambda$setUp$0(PollsTest.java:59)"
-- -> I think this issue is due to me not being able to store the poll properly, so I would need to fix this before being able to create the tables
+- -> I think this issue is due to me not being able to store the poll properly, so I would need to fix this before being
+able to create the tables, and inspect the tables created. I 
