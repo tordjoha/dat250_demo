@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -15,10 +16,11 @@ public class User {
     private Long id;
     private String username;
     private String email;
-    private LinkedHashSet<Poll> created;
+
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Poll> created;
 
     public User() {
-        this.created = new LinkedHashSet<>();
     }
 
     public User(String username, String email) {
@@ -61,6 +63,7 @@ public class User {
         Instant publishedAt = Instant.now();
         Instant validUntil = publishedAt.plus(24, ChronoUnit.HOURS);
         Poll poll = new Poll(id, question, publishedAt, validUntil);
+        poll.setCreatedBy(this);
         created.add(poll);
         return poll;
 
@@ -71,7 +74,8 @@ public class User {
      * and returns the Vote as an object.
      */
     public Vote voteFor(VoteOption option) {
-        // TODO: implement
-        return null;
+        Vote vote = new Vote(Instant.now(), option, this);
+        option.getVotes().add(vote);
+        return vote;
     }
 }

@@ -2,14 +2,23 @@ package com.example.demo.dm;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-public class VoteOption
-{
+public class VoteOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String caption;
     private int presentationOrder;
+
+    @OneToMany(mappedBy = "votesOn", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vote> votes = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "poll_id")
+    private Poll poll;
 
     public VoteOption() {
     }
@@ -17,6 +26,14 @@ public class VoteOption
     public VoteOption(String caption, int presentationOrder) {
         this.caption = caption;
         this.presentationOrder = presentationOrder;
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 
     public Long getId() {
@@ -41,5 +58,13 @@ public class VoteOption
 
     public void setPresentationOrder(int presentationOrder) {
         this.presentationOrder = presentationOrder;
+    }
+
+    public Poll getPoll() {
+        return poll;
+    }
+
+    public void setPoll(Poll poll) {
+        this.poll = poll;
     }
 }

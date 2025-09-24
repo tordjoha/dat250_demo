@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Poll
-{
+public class Poll {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,6 +15,10 @@ public class Poll
     private String question;
     private Instant publishedAt;
     private Instant validUntil;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User createdBy;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Vote> votes = new ArrayList<>();
@@ -89,6 +92,7 @@ public class Poll
     public VoteOption addVoteOption(String caption) {
         int order = options.size();
         VoteOption option = new VoteOption(caption, order);
+        option.setPoll(this);
         options.add(option);
         return option;
     }
@@ -99,5 +103,13 @@ public class Poll
 
     public boolean removeVoteOption(VoteOption option) {
         return options.remove(option);
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 }
