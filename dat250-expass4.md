@@ -22,17 +22,15 @@ making it not possible to add voting options or votes to them.
 
 [PollsTest](src/test/java/com/example/demo/PollsTest.java)
 
-## Explanation of how I inspected the database tables and what tables were created. Provide screenshots of created tables
-- Haven't been able to create the tables as there is still some errors to be solved, see below
+All tests passed ![Tests passed](assignment_assets/tests_passed.png)
+
+## What is happening in the database during the tests?
+To see what is happening, I added two lines of code in setup of the
+```EntityManagerFactory emf = new PersistenceConfiguration("polls")```
+These were:
+![](assignment_assets/hibernate_sql.png)
+Now I can see each SQL statement being executed.
+![](assignment_assets/hibernate_tables.png)
 
 ## Pending issues
 - Have trouble with storing of polls, I can create them but when trying to retrieve, I get an empty list "[]"
-- ````java
-  "java.lang.IllegalArgumentException: Entity may not be null
-  at org.hibernate.event.spi.PersistEvent.<init>(PersistEvent.java:27)
-  at org.hibernate.event.spi.PersistEvent.<init>(PersistEvent.java:20)
-  at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:676)
-  at com.example.demo.PollsTest.populate(PollsTest.java:40)
-  at com.example.demo.PollsTest.lambda$setUp$0(PollsTest.java:59)"
-- -> I think this issue is due to me not being able to store the poll properly, so I would need to fix this before being
-able to create the tables, and inspect the tables created. I 
