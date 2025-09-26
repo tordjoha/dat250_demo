@@ -25,6 +25,7 @@ dependencies {
     implementation("org.hibernate.orm:hibernate-core:7.1.1.Final") // Hibernate ORM
     implementation("jakarta.persistence:jakarta.persistence-api:3.2.0") // JPA API
     implementation("com.h2database:h2:2.3.232") // H2 Database
+    implementation("redis.clients:jedis:6.2.0") // Redis
 }
 
 tasks.withType<Test> {
