@@ -5,6 +5,7 @@ import com.example.demo.dm.Vote;
 import org.springframework.web.bind.annotation.*;
 import java.time.Instant;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/polls/{pollId}/vote")
@@ -25,7 +26,7 @@ public class VoteController {
     }
 
     @GetMapping
-    public List<Vote> getVotes(@PathVariable String pollId) {
+    public Map<String, String> getVotes(@PathVariable String pollId) {
         return pollManager.getVotes(pollId);
     }
 
