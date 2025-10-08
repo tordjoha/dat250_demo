@@ -1,6 +1,6 @@
-package com.example.demo.amqp;
+package com.example.demo.service.amqp;
 
-import com.example.demo.dm.PollManager;
+import com.example.demo.service.PollManager;
 import com.example.demo.events.VoteEvent;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;

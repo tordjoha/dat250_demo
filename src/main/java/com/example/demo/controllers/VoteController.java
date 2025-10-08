@@ -1,10 +1,9 @@
 package com.example.demo.controllers;
 
-import com.example.demo.dm.PollManager;
-import com.example.demo.dm.Vote;
+import com.example.demo.service.PollManager;
+import com.example.demo.domain.Vote;
 import org.springframework.web.bind.annotation.*;
 import java.time.Instant;
-import java.util.List;
 import java.util.Map;
 
 @RestController

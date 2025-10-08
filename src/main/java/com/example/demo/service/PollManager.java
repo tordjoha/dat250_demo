@@ -1,8 +1,10 @@
-package com.example.demo.dm;
+package com.example.demo.service;
 
-import com.example.demo.amqp.BrokerService;
+import com.example.demo.domain.Poll;
+import com.example.demo.domain.User;
+import com.example.demo.domain.Vote;
+import com.example.demo.domain.VoteOption;
 import com.example.demo.events.VoteEvent;
-import com.example.demo.service.RedisPollCache;
 import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.stream.Collectors;

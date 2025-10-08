@@ -1,5 +1,6 @@
-package com.example.demo.amqp;
+package com.example.demo.service.amqp;
 
+import com.example.demo.service.BrokerService;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;

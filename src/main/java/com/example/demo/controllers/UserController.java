@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
-import com.example.demo.dm.PollManager;
-import com.example.demo.dm.User;
+import com.example.demo.service.PollManager;
+import com.example.demo.domain.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

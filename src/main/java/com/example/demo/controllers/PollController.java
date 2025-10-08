@@ -1,13 +1,12 @@
 package com.example.demo.controllers;
 
-import com.example.demo.dm.Poll;
-import com.example.demo.dm.PollManager;
-import com.example.demo.dm.VoteOption;
+import com.example.demo.domain.Poll;
+import com.example.demo.service.PollManager;
+import com.example.demo.domain.VoteOption;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping("/polls")

@@ -1,4 +1,4 @@
-package com.example.demo.amqp;
+package com.example.demo.service;
 
 public interface BrokerService {
     /** Register a topic with the broker */

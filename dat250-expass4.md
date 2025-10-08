@@ -14,11 +14,11 @@ making it not possible to add voting options or votes to them.
 [UserController](src/main/java/com/example/demo/controllers/UserController.java)
 [VoteController](src/main/java/com/example/demo/controllers/VoteController.java)
 
-[Poll](src/main/java/com/example/demo/dm/Poll.java)
-[PollManager](src/main/java/com/example/demo/dm/PollManager.java)
-[User](src/main/java/com/example/demo/dm/User.java)
-[Vote](src/main/java/com/example/demo/dm/Vote.java)
-[VoteOption](src/main/java/com/example/demo/dm/VoteOption.java)
+[Poll](src/main/java/com/example/demo/domain/Poll.java)
+[PollManager](src/main/java/com/example/demo/domain/PollManager.java)
+[User](src/main/java/com/example/demo/domain/User.java)
+[Vote](src/main/java/com/example/demo/domain/Vote.java)
+[VoteOption](src/main/java/com/example/demo/domain/VoteOption.java)
 
 [PollsTest](src/test/java/com/example/demo/PollsTest.java)
 
