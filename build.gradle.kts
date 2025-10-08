@@ -27,6 +27,7 @@ dependencies {
     implementation("com.h2database:h2:2.3.232") // H2 Database
     implementation("redis.clients:jedis:6.2.0") // Redis
     implementation("org.springframework.boot:spring-boot-starter-data-redis") // Spring Data Redis
+    implementation("org.springframework.boot:spring-boot-starter-amqp") // Spring AMQP
 }
 
 tasks.withType<Test> {

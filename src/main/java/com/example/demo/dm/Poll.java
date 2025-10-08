@@ -15,6 +15,7 @@ public class Poll {
     private String question;
     private Instant publishedAt;
     private Instant validUntil;
+    private String topic;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -34,6 +35,7 @@ public class Poll {
         this.question = question;
         this.publishedAt = publishedAt;
         this.validUntil = validUntil;
+        this.topic = "poll." + identifier;
     }
 
     public Long getId() {
@@ -111,5 +113,13 @@ public class Poll {
 
     public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 }

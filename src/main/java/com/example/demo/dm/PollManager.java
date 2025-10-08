@@ -1,5 +1,7 @@
 package com.example.demo.dm;
 
+import com.example.demo.amqp.BrokerService;
+import com.example.demo.events.VoteEvent;
 import com.example.demo.service.RedisPollCache;
 import org.springframework.stereotype.Component;
 import java.util.*;
@@ -10,10 +12,12 @@ public class PollManager {
     private final Map<String, User> users = new HashMap<>();
     private final Map<String, Poll> polls = new HashMap<>();
     private final RedisPollCache redisPollCache;
+    private final BrokerService brokerService;
     private static final long POLL_CACHE_TTL = 600; // 10 minutes
 
-    public PollManager(RedisPollCache redisPollCache) {
+    public PollManager(RedisPollCache redisPollCache, BrokerService brokerService) {
         this.redisPollCache = redisPollCache;
+        this.brokerService = brokerService;
     }
 
     public User getUser(String username) {
@@ -42,6 +46,7 @@ public class PollManager {
         }
         polls.put(poll.getIdentifier(), poll);
         redisPollCache.cachePollResults(Long.valueOf(poll.getIdentifier()), Map.of(), POLL_CACHE_TTL);
+        brokerService.createTopic(poll.getTopic());
         return poll;
     }
 
@@ -60,6 +65,10 @@ public class PollManager {
         }
         poll.getVotes().add(vote);
         redisPollCache.invalidatePoll(Long.valueOf(pollId));
+        VoteEvent event = new VoteEvent(Long.valueOf(pollId),
+                vote.getVotesOn().getId(),
+                vote.getId());
+        brokerService.publish(poll.getTopic(), event);
         return vote;
     }
 
@@ -90,5 +99,31 @@ public class PollManager {
         redisPollCache.cachePollResults(pollIdLong, aggregatedCounts, POLL_CACHE_TTL);
 
         return aggregatedCounts;
+    }
+
+    public void handleVoteEvent(VoteEvent event) {
+        Poll poll = polls.get(String.valueOf(event.getPollId()));
+        if (poll == null) {
+            System.err.println("Poll not found for vote event: " + event.getPollId());
+            return;
+        }
+
+        VoteOption option = poll.getOptions().stream()
+                .filter(o -> o.getId().equals(event.getOptionId()))
+                .findFirst()
+                .orElse(null);
+
+        if (option == null) {
+            System.err.println("Option not found for vote event: " + event.getOptionId());
+            return;
+        }
+
+        Vote vote = new Vote();
+        vote.setVotesOn(option);
+        vote.setId(event.getUserId());
+        poll.getVotes().add(vote);
+
+        redisPollCache.invalidatePoll(Long.valueOf(poll.getIdentifier()));
+        System.out.println("Vote event applied for poll " + poll.getIdentifier());
     }
 }
